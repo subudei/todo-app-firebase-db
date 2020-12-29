@@ -1,0 +1,17 @@
+.sign__up__container {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 30rem;
+  height: 60vh;
+  margin: auto;
+}
+.sign__up__form {
+  width: 20rem;
+}
+.sign__in__label {
+  display: flex;
+  flex-direction: column;
+}
