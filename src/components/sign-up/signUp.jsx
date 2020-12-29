@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./signUp.styles.css";
 
 import { useAuth } from "../../contexts/authContext";
@@ -8,17 +8,30 @@ function SignUp() {
   const passwordRef = useRef();
   const passwordConnfirmationRef = useRef();
   const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e) {
-    e.prevent.default();
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-    signup(emailRef.current.value, passwordRef.current.value);
+    if (passwordRef.current.value !== passwordConnfirmationRef.current.value) {
+      return setError("password do not match");
+    }
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to create account");
+    }
+    setLoading(false);
   }
 
   return (
     <div className="sign__up__container">
-      <form className="sign__up__form">
-        <h2>Sign Up</h2>
+      <h2>Sign Up</h2>
+      {error && <h3>{error}</h3>}
+      <form className="sign__up__form" onSubmit={handleSubmit}>
         <div className="sign__in__label">
           <label>email</label>
           <input
@@ -48,7 +61,12 @@ function SignUp() {
           />
         </div>
         <div>
-          <button className="sign__up__btn" type="submit">
+          <button
+            className="sign__up__btn"
+            type="submit"
+            disabled={loading}
+            onClick={handleSubmit}
+          >
             Sign Up
           </button>
         </div>

@@ -9,6 +9,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
     auth.createUserWithEmailAndPassword(email, password);
@@ -16,6 +17,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsucribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user); // create user in firebase onmount
+      setLoading(false);
     });
     return unsucribe;
   }, []);
@@ -24,5 +26,9 @@ export function AuthProvider({ children }) {
     currentUser,
     signup,
   };
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }
