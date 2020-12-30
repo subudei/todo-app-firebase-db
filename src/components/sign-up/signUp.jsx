@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./signUp.styles.css";
+import { Link, useHistory } from "react-router-dom";
 
 import { useAuth } from "../../contexts/authContext";
 
@@ -10,6 +11,7 @@ function SignUp() {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +23,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
     } catch {
       setError("Failed to create account");
     }
@@ -72,7 +75,9 @@ function SignUp() {
         </div>
       </form>
       <div>
-        <h2>Alredy have an acount</h2>
+        <h2>
+          Alredy have an acount? <Link to="/login">Log In</Link>
+        </h2>
       </div>
     </div>
   );

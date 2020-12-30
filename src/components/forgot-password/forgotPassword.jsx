@@ -1,34 +1,35 @@
 import React, { useRef, useState } from "react";
 import "../sign-up/signUp.styles.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useAuth } from "../../contexts/authContext";
 
-function LogIn() {
+function ForgotPassword() {
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const [message, setMessage] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      setMessage("");
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      await resetPassword(emailRef.current.value);
+      setMessage("Check your inbox for further instructiones");
     } catch {
-      setError("Failed to log in");
+      setError("Failed to Reset Password!");
     }
     setLoading(false);
   }
 
   return (
     <div className="sign__up__container">
-      <h2>Log In</h2>
+      <h2>Password Reset</h2>
       {error && <h3>{error}</h3>}
+      {message && <h3>{message}</h3>}
       <form className="sign__up__form" onSubmit={handleSubmit}>
         <div className="sign__in__label">
           <label>email</label>
@@ -39,15 +40,6 @@ function LogIn() {
             required
           />
         </div>
-        <div className="sign__in__label">
-          <label>password</label>
-          <input
-            ref={passwordRef}
-            className="sign__up__inp"
-            type="password"
-            required
-          />
-        </div>
         <div>
           <button
             className="sign__up__btn"
@@ -55,10 +47,10 @@ function LogIn() {
             disabled={loading}
             onClick={handleSubmit}
           >
-            Log In
+            Reset Password
           </button>
         </div>
-        <Link to="/forgot-password">Forgot Password?</Link>
+        <Link to="/login">Log In</Link>
         <div>
           <h2>
             Need an account? <Link to="/signup">Sign Up</Link>
@@ -69,4 +61,4 @@ function LogIn() {
   );
 }
 
-export default LogIn;
+export default ForgotPassword;

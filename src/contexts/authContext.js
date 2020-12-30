@@ -12,8 +12,21 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
-    auth.createUserWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email, password);
   }
+
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password);
+  }
+
+  function logout() {
+    return auth.signOut();
+  }
+
+  function resetPassword(email) {
+    return auth.sendPasswordResetEmail(email);
+  }
+
   useEffect(() => {
     const unsucribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user); // create user in firebase onmount
@@ -24,7 +37,10 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
+    login,
     signup,
+    logout,
+    resetPassword,
   };
   return (
     <AuthContext.Provider value={value}>

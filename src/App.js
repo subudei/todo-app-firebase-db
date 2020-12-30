@@ -3,8 +3,10 @@ import "./App.css";
 import SignUp from "./components/sign-up/signUp";
 import { AuthProvider } from "./contexts/authContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./components/login/login";
+import LogIn from "./components/login/login";
 import Home from "./components/home/home";
+import PrivateRoute from "./components/private-route/privateRoute";
+import ForgotPassword from "./components/forgot-password/forgotPassword";
 
 function App() {
   return (
@@ -12,9 +14,10 @@ function App() {
       <AuthProvider>
         <h1>Todo App</h1>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <PrivateRoute exact path="/" component={Home} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/forgot-password" component={ForgotPassword} />
         </Switch>
       </AuthProvider>
     </Router>
