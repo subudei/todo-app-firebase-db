@@ -7,6 +7,7 @@ import LogIn from "./components/login/login";
 import Home from "./components/home/home";
 import PrivateRoute from "./components/private-route/privateRoute";
 import ForgotPassword from "./components/forgot-password/forgotPassword";
+import UpdateProfile from "./components/update-profile/updateProfile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <h1>Todo App</h1>
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={LogIn} />
           <Route path="/forgot-password" component={ForgotPassword} />
