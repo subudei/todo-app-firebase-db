@@ -32,11 +32,11 @@ function SignUp() {
 
   return (
     <div className="sign__up__container">
-      <h2>Sign Up</h2>
-      {error && <h3>{error}</h3>}
+      <h2 className="sign__up__title">Sign Up</h2>
+      {error && <h3 className="error__message">{error}</h3>}
       <form className="sign__up__form" onSubmit={handleSubmit}>
-        <div className="sign__in__label">
-          <label>email</label>
+        <div className="sign__up__field">
+          <label className="sign__up__label">email</label>
           <input
             ref={emailRef}
             className="sign__up__inp"
@@ -44,8 +44,8 @@ function SignUp() {
             required
           />
         </div>
-        <div className="sign__in__label">
-          <label>password</label>
+        <div className="sign__up__field">
+          <label className="sign__up__label">password</label>
           <input
             ref={passwordRef}
             className="sign__up__inp"
@@ -53,8 +53,8 @@ function SignUp() {
             required
           />
         </div>
-        <div className="sign__in__label">
-          <label>password confirmation</label>
+        <div className="sign__up__field">
+          <label className="sign__up__label">password confirmation</label>
           <input
             label="password confirmation"
             ref={passwordConnfirmationRef}
@@ -73,12 +73,14 @@ function SignUp() {
             Sign Up
           </button>
         </div>
+
+        <div className="password__secondary__links">
+          <h3>Alredy have an acount?</h3>
+          <Link to="/login">
+            <button className="secondary__btn">Login</button>
+          </Link>
+        </div>
       </form>
-      <div>
-        <h2>
-          Alredy have an acount? <Link to="/login">Log In</Link>
-        </h2>
-      </div>
     </div>
   );
 }

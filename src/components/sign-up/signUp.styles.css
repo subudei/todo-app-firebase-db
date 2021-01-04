@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
 .sign__up__container {
-  background-color: rgba(0, 0, 0, 0.1);
+  font-family: "Ubuntu", sans-serif;
+  /* background-color: rgba(0, 0, 0, 0.1); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,10 +11,75 @@
   height: 60vh;
   margin: auto;
 }
+.sign__up__title {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 3rem;
+}
 .sign__up__form {
   width: 20rem;
 }
-.sign__in__label {
+.sign__up__field {
   display: flex;
   flex-direction: column;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  color: rgb(200, 200, 200);
+}
+.sign__up__inp {
+  font-size: 1rem;
+  height: 2rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  letter-spacing: 0.15rem;
+  border: none;
+  border-bottom: 0.15rem solid rgb(200, 200, 200);
+  color: rgb(30, 30, 30);
+}
+.sign__up__btn {
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgb(0, 38, 255);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.secondary__btn {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.15rem;
+  padding: 0.5rem 1.5rem;
+  border: 0.1rem solid rgb(0, 38, 255);
+  border-radius: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 38, 255);
+  cursor: pointer;
+}
+.error__message {
+  color: rgb(250, 0, 0);
+  text-transform: capitalize;
+  padding: 0.5rem;
+  border: 0.1rem solid rgb(250, 0, 0);
+  border-radius: 0.5rem;
+}
+.confirmation__message {
+  color: rgb(0, 255, 0);
+  text-transform: capitalize;
+  padding: 0.5rem;
+  border: 0.1rem solid rgb(0, 255, 0);
+  border-radius: 0.5rem;
+}
+.link__style {
+  line-height: 2rem;
+  text-decoration: none;
+  color: rgb(0, 38, 255);
+}
+.password__secondary__links {
+  margin: auto;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
