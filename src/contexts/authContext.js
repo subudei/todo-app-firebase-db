@@ -37,7 +37,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsucribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user); // create user in firebase onmount
+      setCurrentUser(user); // create user in firebase auth onMount
       setLoading(false);
     });
     return unsucribe;

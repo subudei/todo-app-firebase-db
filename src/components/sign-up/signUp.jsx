@@ -3,6 +3,7 @@ import "./signUp.styles.css";
 import { Link, useHistory } from "react-router-dom";
 
 import { useAuth } from "../../contexts/authContext";
+import { auth, db } from "../../firebase";
 
 function SignUp() {
   const emailRef = useRef();
@@ -17,12 +18,18 @@ function SignUp() {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConnfirmationRef.current.value) {
-      return setError("password do not match");
+      return setError("password don't match");
     }
     try {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      const currentUser = auth.currentUser;
+      db.collection("users").doc(currentUser.uid).set({
+        email: currentUser.email,
+        ID: currentUser.uid,
+        // todoApp: {}
+      });
       history.push("/");
     } catch {
       setError("Failed to create account");
