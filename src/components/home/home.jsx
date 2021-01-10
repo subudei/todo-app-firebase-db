@@ -56,8 +56,7 @@ function Home() {
   };
 
   return (
-    <div>
-      <h1>HOME page</h1>
+    <div className="home__container">
       <div className="current__user__info">
         <h2>Profile</h2>
         {error && <h2>{error}</h2>}
@@ -80,14 +79,12 @@ function Home() {
         {todos.map((todo) => (
           <TodoList
             key={todo.id}
-            id={todo.id}
             todo={todo.todo}
             inprogress={todo.inprogress}
+            id={todo.id}
           />
         ))}
       </div>
-
-      {<h3>currentUserId :{currentUserId}</h3>}
     </div>
   );
 }

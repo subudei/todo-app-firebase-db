@@ -13,7 +13,6 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <h1>Todo App</h1>
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
