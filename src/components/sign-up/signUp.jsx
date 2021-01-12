@@ -8,6 +8,7 @@ import { auth, db } from "../../firebase";
 function SignUp() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const userNameRef = useRef();
   const passwordConnfirmationRef = useRef();
   const { signup } = useAuth();
   const [error, setError] = useState("");
@@ -28,7 +29,9 @@ function SignUp() {
       db.collection("users").doc(currentUser.uid).set({
         email: currentUser.email,
         ID: currentUser.uid,
-        // todoApp: {}
+      });
+      db.collection("users").doc(currentUser.uid).collection("usersInfo").add({
+        userName: userNameRef.current.value,
       });
       history.push("/");
     } catch {
@@ -54,6 +57,15 @@ function SignUp() {
               required
             />
           </div>
+          <div>
+            <input
+              placeholder="username"
+              ref={userNameRef}
+              className="sign__up__inp"
+              type="text"
+              required
+            />
+          </div>
           <div className="sign__up__field">
             <input
               placeholder="password"
@@ -64,7 +76,6 @@ function SignUp() {
             />
           </div>
           <div className="sign__up__field">
-            {/* <label className="sign__up__label">password confirmation</label> */}
             <input
               placeholder="password confirmation"
               ref={passwordConnfirmationRef}
@@ -85,13 +96,13 @@ function SignUp() {
           </div>
 
           <div className="password__secondary__links">
-            <h3>Alredy have an acount?</h3>
+            <h3 className="question__secondary">Alredy have an acount?</h3>
             <Link to="/login">
               <button className="secondary__btn">Login</button>
             </Link>
           </div>
         </form>
-      </div>{" "}
+      </div>
     </div>
   );
 }

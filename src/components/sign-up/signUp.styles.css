@@ -6,9 +6,7 @@
     rgba(63, 94, 251, 1) 0%,
     rgba(23, 252, 174, 1) 100%
   );
-  /* background-image: url(../../assets/notebook.jpg); */
-  background-size: cover;
-  background-repeat: no-repeat;
+
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -16,8 +14,8 @@
 }
 .circle__one {
   position: absolute;
-  top: 20rem;
-  left: 10rem;
+  bottom: 12vh;
+  left: 10vw;
   width: 15rem;
   height: 15rem;
   border-radius: 50%;
@@ -44,16 +42,13 @@
 }
 .sign__up__container {
   font-family: "Ubuntu", sans-serif;
-  min-width: 50rem;
-  min-height: 30rem;
+  width: 50rem;
+  height: 80vh;
   background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-  /* max-width: 30rem; */
   margin: auto;
-  margin-top: 4rem;
   z-index: 1;
   backdrop-filter: blur(1rem);
   border: solid 2px transparent;
@@ -66,10 +61,10 @@
   letter-spacing: 0.2rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
-  color: rgb(0, 38, 255);
+  color: rgb(0, 37, 31);
 }
 .sign__up__form {
-  width: 20rem;
+  width: 50%;
 }
 .sign__up__field {
   display: flex;
@@ -87,7 +82,7 @@
   padding-left: 0.8rem;
   border: none;
   border-radius: 0.5rem;
-  background: #cdf6f4;
+  background: #f2fffe;
   color: #0a2afa;
 }
 ::placeholder {
@@ -115,7 +110,7 @@
   padding: 0.5rem 1.5rem;
   border: 0.1rem solid rgb(0, 38, 255);
   border-radius: 0.5rem;
-  background-color: #cdf6f4;
+  background-color: #f2fffe;
   color: rgb(0, 38, 255);
   cursor: pointer;
 }
@@ -138,10 +133,56 @@
   text-decoration: none;
   color: rgb(0, 38, 255);
 }
+.question__secondary {
+  color: rgb(0, 37, 31);
+  letter-spacing: 0.1rem;
+}
 .password__secondary__links {
   margin: auto;
   margin-top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.btns__update__profile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+@media only screen and (max-width: 768px) {
+  .circle__one {
+    bottom: 5vh;
+    left: 5vw;
+    width: 10rem;
+    height: 10rem;
+  }
+  .circle__two {
+    top: 5vh;
+    right: 5vw;
+    width: 15rem;
+    height: 15rem;
+  }
+  .sign__up__container {
+    width: 75%;
+  }
+  .sign__up__form {
+    width: 80%;
+  }
+  .password__secondary__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .question__secondary {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (max-width: 411px) {
+  .sign__up__container {
+    height: 95%;
+  }
+  .sign__up__form {
+    margin-bottom: 0.8rem;
+  }
 }

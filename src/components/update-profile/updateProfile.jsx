@@ -1,12 +1,14 @@
 import React, { useRef, useState } from "react";
-// import "./signUp.styles.css";
+import "../sign-up/signUp.styles.css";
 import { Link, useHistory } from "react-router-dom";
 
 import { useAuth } from "../../contexts/authContext";
+// import { db } from "../../firebase";
 
 function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const userNameRef = useRef();
   const passwordConnfirmationRef = useRef();
   const { currentUser, updateEmail, updatePassword } = useAuth();
   const [error, setError] = useState("");
@@ -18,6 +20,9 @@ function UpdateProfile() {
     if (passwordRef.current.value !== passwordConnfirmationRef.current.value) {
       return setError("password do not match");
     }
+    // if (userNameRef.current.value !== null) {
+    //   db.collection("users").doc(currentUser.uid).collection("usersInfo").doc(currentUser.userName);
+    // }
 
     const promises = [];
     setLoading(true);
@@ -42,55 +47,58 @@ function UpdateProfile() {
   }
 
   return (
-    <div className="sign__up__container">
-      <h2>Update Profile</h2>
-      {error && <h3>{error}</h3>}
-      <form className="sign__up__form" onSubmit={handleSubmit}>
-        <div className="sign__in__label">
-          <label>email</label>
-          <input
-            ref={emailRef}
-            className="sign__up__inp"
-            type="email"
-            required
-            defaultValue={currentUser.email}
-          />
-        </div>
-        <div className="sign__in__label">
-          <label>password</label>
-          <input
-            ref={passwordRef}
-            className="sign__up__inp"
-            type="password"
-            placeholder="leave blank to keep the same"
-          />
-        </div>
-        <div className="sign__in__label">
-          <label>password confirmation</label>
-          <input
-            label="password confirmation"
-            ref={passwordConnfirmationRef}
-            className="sign__up__inp"
-            type="password"
-            required
-            placeholder="leave blank to keep the same"
-          />
-        </div>
-        <div>
-          <button
-            className="sign__up__btn"
-            type="submit"
-            disabled={loading}
-            onClick={handleSubmit}
-          >
-            Update
-          </button>
-        </div>
-      </form>
-      <div>
-        <h2>
-          <Link to="/">Cancel</Link>
-        </h2>
+    <div className="main__container">
+      <div className="circle__one" />
+      <div className="circle__two" />
+      <div className="sign__up__container">
+        <h2 className="sign__up__title">Update Profile</h2>
+        {error && <h3 className="error__message">{error}</h3>}
+        <form className="sign__up__form" onSubmit={handleSubmit}>
+          <div className="sign__in__label">
+            <input
+              ref={emailRef}
+              className="sign__up__inp"
+              type="email"
+              required
+              defaultValue={currentUser.email}
+            />
+          </div>
+          <div className="sign__in__label">
+            <input
+              ref={passwordRef}
+              className="sign__up__inp"
+              type="password"
+              placeholder="create new password"
+            />
+          </div>
+          <div className="sign__in__label">
+            <input
+              label="password confirmation"
+              ref={passwordConnfirmationRef}
+              className="sign__up__inp"
+              type="password"
+              required
+              placeholder="confirm new password"
+            />
+          </div>
+          <div className="btns__update__profile">
+            <div>
+              <button
+                className="sign__up__btn"
+                type="submit"
+                disabled={loading}
+                onClick={handleSubmit}
+              >
+                Update
+              </button>
+            </div>
+            <div>
+              <Link to="/">
+                <button className="sign__up__btn">Cancel</button>
+              </Link>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -1,5 +1,30 @@
 .todo__list__task {
   display: flex;
-  width: 20rem;
+  width: 25rem;
   justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.todo__paragraph {
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  color: #fcfcfc;
+}
+.inprogress {
+  padding-left: 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.08rem;
+  color: #00f556;
+}
+.inprogress.done {
+  color: #f50800;
+}
+.todo__icons {
+  display: flex;
+  margin-right: 0;
+}
+.todo__icon {
+  cursor: pointer;
+  margin-left: 1rem;
+  color: #fcfcfc;
+  font-size: 1.2rem;
 }

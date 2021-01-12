@@ -65,7 +65,7 @@ function LogIn() {
             Forgot Password?
           </Link>
           <div className="password__secondary__links">
-            <h3>Need an account? </h3>
+            <h3 className="question__secondary">Need an account? </h3>
             <Link to="/signup">
               <button className="secondary__btn">Sign Up</button>
             </Link>
