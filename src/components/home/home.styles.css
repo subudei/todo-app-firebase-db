@@ -131,18 +131,16 @@
     width: 80%;
   }
   .todo__title {
-    width: 80%;
+    width: 90%;
+    font-size: 1.1rem;
+  }
+  .todo__title__icon {
+    font-size: 1.1rem;
   }
   .todo__form {
-    width: 80%;
+    width: 90%;
   }
-  .password__secondary__links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .question__secondary {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+  .todos__list {
+    width: 90%;
   }
 }

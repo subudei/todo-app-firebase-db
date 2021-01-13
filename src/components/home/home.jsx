@@ -11,13 +11,11 @@ import { MdSettings } from "react-icons/md";
 function Home() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  const currentUserId = currentUser ? currentUser.uid : null;
+  // const currentUserId = currentUser ? currentUser.uid : null;
   const [todoInput, setTodoInput] = useState("");
   const [todos, setTodos] = useState([]);
   const [userData, setUserData] = useState([]);
   const history = useHistory();
-
-  // const [userName, setUserName] = useState("");
 
   useEffect(() => {
     getTodos();
