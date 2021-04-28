@@ -12,10 +12,15 @@ This is a React.JS project made by Milan Cirkovic (https://github.com/subudei).
 ## What tehnologies are used in project
  
  ReactJS
+ 
  React Hooks
+ 
  Firebase
+ 
  React-Router-Dom
+ 
  Context API
+ 
  CSS
 
 
