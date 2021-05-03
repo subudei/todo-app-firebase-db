@@ -32,6 +32,7 @@ create functional components. Using Firebase for User Authentication and Users D
  and store them to firebase DB.
  
  Dummy user 
-        email  :  user@mail.com
-        password: user100
+        - email  :  user@mail.com
+        
+        - password: user100
 
